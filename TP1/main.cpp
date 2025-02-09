@@ -29,13 +29,13 @@ int main(){
     std::cin >>nombre;
     std::cout << "Vous avez entre "<<nombre<<std::endl; 
     #elif EXO == 5
-    std::cout <<"enter the temparture in Celsius ";
+    std::cout <<"enter the temperature in Celsius ";
     float temp;
     std::cin>> temp;
     float in_feh = temp*9/5 + 32;
     std::cout<<"the temperature in Fahrenheit is: "<<in_feh;
     #else
-    std::cerr <<"dddie";
+    std::cerr <<"Define EXO as 1,2,3,4 or 5";
     #endif
     return 0;
 }
