@@ -1,6 +1,6 @@
 #include <iostream>
 #ifndef EXO
-#define EXO 9
+#define EXO 3
 #endif
 
 #if EXO == 1
