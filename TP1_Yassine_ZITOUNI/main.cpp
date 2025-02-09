@@ -24,10 +24,10 @@ int main(){
         std::cout <<"you cannot divide by zero";
     }
     #elif EXO == 4
-    std::cout <<"Entrez un nombre";
+    std::cout <<"Entrez un nombre ";
     int nombre;
     std::cin >>nombre;
-    std::cout << "Vous avez entre "<<nombre<<std::endl; 
+    std::cout << "Vous avez entrer "<<nombre<<std::endl; 
     #elif EXO == 5
     std::cout <<"enter the temperature in Celsius ";
     float temp;
