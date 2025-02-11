@@ -21,7 +21,9 @@ int main(int argc, char* argv[]){
 #elif EXO == 3
 int main(){
     using namespace std;
-    int variable;
+    namespace myspace{
+        int variable = 9;
+    }
     std::cin >> variable;  // I take the variable given
     std::cout << "the variable is "<< variable<<std::endl; //with std::cout
     cout<< "the variable is "<< variable<< std::endl;  //without
