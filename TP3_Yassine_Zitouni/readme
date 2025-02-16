@@ -1,1 +1,9 @@
+You will find below the commands to execute in the terminal in order to run each part of the code.
 
+To compile and run the main.cpp file and execute a specific exercise (EXO = X), use the following command:
+
+g++ -DEXO=X main.cpp -o main Then ./a
+
+Where X is the exercise number you want to run.
+
+If EXO is not defined, the program will default to executing exercise *6*.
