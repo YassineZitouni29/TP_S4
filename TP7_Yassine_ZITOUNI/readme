@@ -1,1 +1,14 @@
+- To compile all the exercises at once:
+      Use the command: make
 
+- To compile one specific exercise (e.g., exo3):
+      Use the command: make exo3
+
+- To execute a compiled exercise (e.g., exo3):
+      Use the command: ./exo3
+
+- To delete all compiled executables:
+      Use the command: make clean
+
+- To delete a specific executable (e.g., exo3):
+      Use the command: rm -f exo3
