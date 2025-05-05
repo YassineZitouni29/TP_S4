@@ -1,0 +1,4 @@
+Nom                 Âge      Salaire        
+Alice               20        12678.88       
+Hamid               111       456765.00      
+Hamodi              12        3467754.00     
