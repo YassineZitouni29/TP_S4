@@ -1,5 +1,7 @@
 #include "Server.hpp"
 #include <iostream>
+#include "iomanip"
+#include "sstream"
 Server::Server(string id,double cpu, double memory):Resource(id, cpu, memory), available_CPU(cpu), available_MEMORY(memory){}
 void Server::start(){
     active = true;
@@ -20,8 +22,13 @@ bool Server::allocate(double cpu,double memory){
     }
 }
 string Server::getMetrics() const{
-    return "[Server: id:" + id + "CPU " + to_string(cpu)+" , Memory, "+ to_string(memory) + " available_CPU "+
-     to_string(available_CPU) + " , Available Memory " + to_string(available_MEMORY);
+    ostringstream oss;
+    oss<<left<<"[Server: "<<setw(8)<<id
+    <<"| Total"<<setw(5)<<cpu<<" CPU"
+    <<setw(6)<<memory<<" Memory"
+    <<"| Free"<<setw(5)<<available_CPU<<"CPU"
+    <<setw(6)<<available_MEMORY<<endl;
+    return oss.str();
 }
 ostream& operator<<(std::ostream& os, const Server& s){
     os<<"[Server: id: "<<s.id<< "CPU "<<s.cpu<<", Memory, "<<s.memory<< " available_CPU "<<s.available_CPU<<
