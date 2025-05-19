@@ -19,11 +19,17 @@ void KubernetesCluster::deployPod(std::unique_ptr<Pod> pod){
         summ_memory += container->get_memory();
     }
     for (const auto& node : nodes) {
-        if (node->allocate(summ_cpu, summ_memory)) {
-            Pods.push_back(std::move(pod)); // Add the pod if allocated
+        try {
+            node->allocate(summ_cpu, summ_memory);
+            pod->deploy();
+            Pods.push_back(std::move(pod));
+            cout<<"Pod deploye avec success"<<endl;
             return;
+        }catch(const AllocationException& e){
+            continue;
         }
     }
+    throw AllocationException("Aucun server n'est disponible pour deployer le Pod");
 }
 
 bool KubernetesCluster::schedulePod(Pod& pod){
