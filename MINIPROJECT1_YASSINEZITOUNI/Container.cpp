@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Container.hpp"
 #include "Ressource.hpp"
+#include "sstream"
+#include "iomanip"
 Container::Container(string id, string image, double cpu, double memory): Resource(id, cpu, memory), image(image){}
 void Container::start(){
     active = true;
@@ -23,4 +25,13 @@ double Container::get_cpu(){
 }
 double Container::get_memory(){
     return memory;
+}
+string Container::getMetrics() const{
+    ostringstream oss;
+    oss<<left<<
+    "[container: "<<setw(5)<< id<<
+    "| "<<setw(5)<<cpu<<" cpu"<<
+    ", "<<setw(6)<<memory<<" memory"
+    ", "<<image<<" image"<<endl;
+    return oss.str();
 }
