@@ -8,12 +8,16 @@ void Server::stop(){
     active = false;
 }
 bool Server::allocate(double cpu,double memory){
-    if (cpu<=available_CPU && memory<=available_MEMORY){
+    if (cpu<=available_CPU && memory<=available_MEMORY && this->active){
         available_CPU-=cpu;
         available_MEMORY-=memory;
         return true;
     }
-    return false;
+    if (!this->active){
+        throw AllocationException("Allocation Error: Serveur "+this->id+" est inactif");
+    }else{
+        throw AllocationException("Allocation Error: Serveur "+this->id+" :ressource insuffisante");
+    }
 }
 string Server::getMetrics() const{
     return "[Server: id:" + id + "CPU " + to_string(cpu)+" , Memory, "+ to_string(memory) + " available_CPU "+
