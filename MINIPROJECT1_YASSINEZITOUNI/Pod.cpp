@@ -32,14 +32,6 @@ void Pod::deploy(){
         (*i)->start();
     }
 }
-string Pod::getMetrics() const{
-    string res;
-    for (auto i=containers.begin(); i!=containers.end();++i){
-        res+= (*i)->getMetrics();
-        res +="\n";
-    }
-    return res;
-}
 ostream& operator<<(ostream& os, const Pod& p){
     os<<p.name<<" "<<p.getMetrics()<<endl;
     return os;
