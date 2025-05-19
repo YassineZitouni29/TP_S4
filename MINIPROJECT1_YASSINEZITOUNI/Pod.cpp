@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Pod.hpp"
+#include "iomanip"
+#include "sstream"
 Pod::Pod(string name, std::unordered_map<std::string, std::string> labels):name(name),labels(labels){}
 void Pod::addContainer(std::unique_ptr<Container> container){
     if (labels.find(container->get_id()) != labels.end()) return;
@@ -8,7 +10,13 @@ void Pod::addContainer(std::unique_ptr<Container> container){
     auto& movedPod = containers.back();
     labels[movedPod->get_id()] = movedPod->getMetrics();
 }
-
+string Pod::getMetrics() const{
+    ostringstream oss;
+    for (auto i=containers.begin(); i!=containers.end();++i){
+        oss<<" └─ "<<(*i)->getMetrics();
+    }
+    return oss.str();
+}
 bool Pod::removeContainer(const string& id){
     for (auto i=containers.begin(); i!=containers.end();++i){
         if ((*i)->get_id() == id){
